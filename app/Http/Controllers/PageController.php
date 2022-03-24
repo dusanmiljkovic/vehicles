@@ -86,8 +86,8 @@ class PageController extends Controller
             'brand' => 'required|integer|exists:brands,id',
             'brandModel' => 'required|integer|exists:brand_models,id',
             'vehicleType' => 'nullable|string|max:500',
-            'vehicleMileage' => 'nullable|integer',
-            'vehiclePrice' => 'nullable|numeric',
+            'vehicleMileage' => 'nullable|integer|max:2147483647',
+            'vehiclePrice' => 'nullable|numeric|max:999999999999999',
         ]);
         $brand = Brand::whereId($request->brand)->first();
         $model = $brand->models()->where('id', $request->brandModel)->first();
